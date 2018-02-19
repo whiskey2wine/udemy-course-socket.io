@@ -1,4 +1,3 @@
-/* jshint esversion: 6 */
 const path = require('path');
 const http = require('http');
 const express = require('express');
@@ -20,10 +19,10 @@ io.on('connection', (socket) => {
 
     socket.broadcast.emit('newMsg', generateMessage('Admin', 'New user joined'));
 
-    socket.on('createMsg', (msg) => {
+    socket.on('createMsg', (msg, callback) => {
         console.log('createMsg:', msg);
         io.emit('newMsg', generateMessage(msg.from, msg.text));
-
+        callback('This is from the server.');
         // socket.broadcast.emit('newMsg', {
         //     from: msg.from,
         //     text: msg.text,
