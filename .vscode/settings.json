@@ -1,5 +1,6 @@
 {
     "jshint.exclude": {
         "**/moment.js": true
-    }
+    },
+    "editor.cursorBlinking": "phase",
 }
