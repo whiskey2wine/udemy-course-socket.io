@@ -76,7 +76,6 @@ $('#message-form').on('submit', function (e) {
     var messageTextbox = $('[name=message]');
 
     socket.emit('createMsg', {
-        from: 'User',
         text: messageTextbox.val()
     }, function () {
         messageTextbox.val('');
@@ -92,13 +91,13 @@ locationButton.on('click', function () {
     locationButton.attr('disabled', 'disabled').text('Sending location...');
 
     navigator.geolocation.getCurrentPosition(function (pos) {
-        locationButton.removeAttr('disabled').text('Sending location');
+        locationButton.removeAttr('disabled').text('Send location');
         socket.emit('createLocationMessage', {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude
         });
     }, function () {
-        locationButton.removeAttr('disabled').text('Sending location');
+        locationButton.removeAttr('disabled').text('Send location');
         alert('Unable to fetch location.');
     });
 });
