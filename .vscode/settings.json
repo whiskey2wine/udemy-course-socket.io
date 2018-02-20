@@ -1,3 +1,5 @@
 {
-    "jshint.excludePath": "public/js/libs/moment.js"
+    "jshint.exclude": {
+        "**/moment.js": true
+    }
 }
